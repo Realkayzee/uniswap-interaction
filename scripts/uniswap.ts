@@ -47,7 +47,16 @@ async function main() {
     const userusdtbal = await Usdt.balanceOf(USDTuser);
     const userusdcbal = await Usdc.balanceOf(USDTuser);
 
-    console.log(`${userusdtbal}, ${userusdcbal}`);
+    console.log(`USDT balance after the swap: ${userusdtbal}, USDC balance after swap ${userusdcbal}`)
+    // interact with the second function
+    const userusdt = await Usdt.balanceOf(USDTuser);
+    const usereth = await Weth.balanceOf(USDTuser);
+    console.log(`USDT balance before the swap: ${userusdt}, USDC balance before swap ${usereth}`);
+    await Uniswap.swapTokensForExactETH(2000, 2000, [USDT, weth], USDTuser, timestamp, {gasLimit: ethers.utils.hexlify(1000000)});
+    const userUsdtBalance = await Usdt.balanceOf(USDTuser);
+    const userwethBalance = await Weth.balanceOf(USDTuser)
+
+    console.log(`USDT balance after swap: ${userUsdtBalance}, Weth balance after swap: ${userwethBalance}`);
 }
 
 
