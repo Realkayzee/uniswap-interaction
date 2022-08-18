@@ -8,7 +8,8 @@ async function main() {
     //Interact
 
     await Todo.AddTodo("Let me see");
-    await Todo.checkAllElementInTodo();
+    const checktodo = await Todo.checkAllElementInTodo();
+    console.log(checktodo);
     await Todo.deleteAllElementInTodo();
 }
 
