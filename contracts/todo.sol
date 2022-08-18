@@ -2,7 +2,7 @@
 
 pragma solidity 0.8.9;
 // A contract that sends in user's to do list and save it.
-contract ToDOList{
+contract ToDoList{
     string[] public Todo;
 
 

@@ -1,7 +1,7 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  const Todo = await ethers.getContractFactory("ToDOList");
+  const Todo = await ethers.getContractFactory("ToDoList");
   const todo = await Todo.deploy(Todo);
 
   await todo.deployed();
@@ -16,10 +16,13 @@ async function main() {
   console.log(checkalltodo);
 
   const deletetodo = await todo.deleteAllElementInTodo();
-}
+  console.log(deletetodo);
+// 
 
 // We recommend this pattern to be able to use async/await everywhere
 // and properly handle errors.
+
+}
 main().catch((error) => {
   console.error(error);
   process.exitCode = 1;

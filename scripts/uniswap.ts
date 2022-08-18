@@ -41,12 +41,13 @@ async function main() {
     await Usdt.approve(uniswap, approvalamount, {gasLimit: ethers.utils.hexlify(1000000)});
     const UserUsdtBalance = await Usdt.balanceOf(USDTuser);
     const UserUsdcBalance = await Usdc.balanceOf(USDTuser)
-    console.log(`USDT balance before the swap: ${UserUsdtBalance}, USDC balance before swap ${UserUsdcBalance}`);
+    console.log(`USDT balance before the swap: ${UserUsdtBalance}, USDC balance before swap ${UserUsdcBalance}`)
+    await Uniswap.swapExactTokensForTokens(2000, 1000, [USDT, USDC], USDTuser, timestamp, {gasLimit: ethers.utils.hexlify(1000000)});
 
+    const userusdtbal = await Usdt.balanceOf(USDTuser);
+    const userusdcbal = await Usdc.balanceOf(USDTuser);
 
-
-
-
+    console.log(`${userusdtbal}, ${userusdcbal}`);
 }
 
 
