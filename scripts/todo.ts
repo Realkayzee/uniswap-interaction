@@ -1,29 +1,18 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  const Todo = await ethers.getContractFactory("ToDoList");
-  const todo = await Todo.deploy(Todo);
+    const Todo = await ethers.getContractFactory("ToDoList");
+    const todo = await Todo.deploy();
 
-  await todo.deployed();
+    await todo.deployed();
 
-  console.log(`Contract address deployed to: ${todo.address}`);
-  // interaction
-  await todo.AddTodo("I want something tomorrow");
-  const checktodo = await todo.checkTodoListByInput(0);
-  console.log(checktodo);
-  const checkalltodo = await todo.checkAllElementInTodo();
 
-  console.log(checkalltodo);
-
-  const deletetodo = await todo.deleteAllElementInTodo();
-  console.log(deletetodo);
-// 
-
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
-
+    console.log(`The contract is deployed to: ${todo.address}`);
 }
+
 main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+    console.error(error);
+    process.exitCode = 1;
+  });
+
+  // 0xbf8C47baccB9c8410fcfcc2E6d052b7b8Dc4FE85
